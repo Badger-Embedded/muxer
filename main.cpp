@@ -1,10 +1,3 @@
-/* simple.c
-
-   Simple libftdi usage example
-
-   This program is distributed under the GPL, version 2
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -23,18 +16,19 @@ CLICommand parseArguments(int argc, const char **argv, CLIOption* options) {
             { "list", 'l', POPT_ARG_NONE, NULL, 'l', "lists all Badgerd USBMUX devices connected to PC", NULL },
             { "show-serial", 'o', POPT_ARG_NONE, NULL, 'o', "displays serial number of given device", NULL },
             { "set-serial", 'r', POPT_ARG_STRING, &options[static_cast<int>(CLIOptions::SET_SERIAL)].args, 'r', "writes serial number to given device", NULL },
-            { "init", 't', POPT_ARG_NONE, NULL, 't', "initialize target board", NULL },
+            { "init", 'i', POPT_ARG_NONE, NULL, 'i', "initialize target board", NULL },
             { "dut", 'd', POPT_ARG_NONE, NULL, 'd', "connects USB to the target board", NULL },
-            { "ts", 's', POPT_ARG_NONE, NULL, 's', "connects USB to the test server", NULL },
-            { "set-id-pin", 'i', POPT_ARG_INT, &options[static_cast<int>(CLIOptions::USB_ID_PIN)].argn, 'i', "writes USB ID pin of DUT port in USBMUX", NULL },
-            { "status", 'u', POPT_ARG_NONE, NULL, 'u', "show current status: DUT or TS or NOINIT", NULL },
+            { "dut-device", 'u', POPT_ARG_NONE, NULL, 'u', "connects target board and host together", NULL },
+            { "ts", 't', POPT_ARG_NONE, NULL, 't', "connects USB to the test server", NULL },
+            { "set-id-pin", 'b', POPT_ARG_INT, &options[static_cast<int>(CLIOptions::USB_ID_PIN)].argn, 'b', "writes USB ID pin of DUT port in USBMUX", NULL },
+            { "status", 's', POPT_ARG_NONE, NULL, 's', "show current status: DUT or TS or NOINIT", NULL },
             { "device-id", 'v', POPT_ARG_INT, &options[static_cast<int>(CLIOptions::DEVICE_ID)].argn, 'v', "use device with given id", NULL },
             { "device-serial", 'e', POPT_ARG_STRING, &options[static_cast<int>(CLIOptions::DEVICE_SERIAL)].args, 'e',
                     "use device with given serial number", NULL },
             { "device-type", 'k', POPT_ARG_STRING, &options[static_cast<int>(CLIOptions::DEVICE_TYPE)].args, 'k',
                     "make the device of this type", NULL },
             { "vendor", 'x', POPT_ARG_INT, &options[static_cast<int>(CLIOptions::VENDOR)].argn, 'x', "use device with given vendor id", NULL },
-            { "product", 'a', POPT_ARG_INT, &options[static_cast<int>(CLIOptions::PRODUCT)].argn, 'a', "use device with given product id", NULL },
+            { "product", 'p', POPT_ARG_INT, &options[static_cast<int>(CLIOptions::PRODUCT)].argn, 'p', "use device with given product id", NULL },
             POPT_AUTOHELP
             { NULL, 0, 0, NULL, 0, NULL, NULL }
     };
@@ -46,11 +40,36 @@ CLICommand parseArguments(int argc, const char **argv, CLIOption* options) {
         poptFreeContext(optCon);
         return CLICommand::NONE;
     }
+
     /* Now do options processing, get portname */
     while ((c = poptGetNextOpt(optCon)) >= 0) {
         switch (c) {
             case 'l':
                 cmd = CLICommand::LIST;
+                break;
+            case 'o':
+                cmd = CLICommand::SHOW_SERIAL;
+                break;
+            case 'r':
+                cmd = CLICommand::SET_SERIAL;
+                break;
+            case 'i':
+                cmd = CLICommand::INIT;
+                break;
+            case 'd':
+                cmd = CLICommand::DUT;
+                break;
+            case 't':
+                cmd = CLICommand::TS;
+                break;
+            case 'u':
+                cmd = CLICommand::DUT_TO_TS;
+                break;
+            case 'b':
+                cmd = CLICommand::SET_USB_ID_PIN;
+                break;
+            case 's':
+                cmd = CLICommand::STATUS;
                 break;
             default:
                 cmd = CLICommand::UNKNOWN;
@@ -91,31 +110,40 @@ int main(int argc, const char **argv)
     {
     case CLICommand::LIST:
         // TODO: Call list devices
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::SET_SERIAL:
         // TODO: set serial id of the device using options
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::SET_USB_ID_PIN:
         // TODO: set usb id of dut port using options
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::INIT:
         // TODO: init the device via description
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::SHOW_SERIAL:
-        break;
+        // TODO:
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::DUT:
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::TS:
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::DUT_TO_TS:
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     case CLICommand::STATUS:
-        break;
+        printf("Not implemented yet!");
+        return EXIT_FAILURE;
     default:
-        break;
+        fprintf(stderr, "Unknown command!\n");
+        return EXIT_FAILURE;
     }
-
-    return EXIT_SUCCESS;
 
     if ((ftdi = ftdi_new()) == 0)
     {
