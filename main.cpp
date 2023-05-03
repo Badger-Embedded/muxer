@@ -110,39 +110,41 @@ int main(int argc, const char **argv)
     {
     case CLICommand::LIST:
         // TODO: Call list devices
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::SET_SERIAL:
         // TODO: set serial id of the device using options
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::SET_USB_ID_PIN:
         // TODO: set usb id of dut port using options
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::INIT:
         // TODO: init the device via description
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::SHOW_SERIAL:
         // TODO:
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::DUT:
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::TS:
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::DUT_TO_TS:
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
     case CLICommand::STATUS:
-        printf("Not implemented yet!");
+        printf("Not implemented yet!\n");
         return EXIT_FAILURE;
-    default:
+    case CLICommand::UNKNOWN:
         fprintf(stderr, "Unknown command!\n");
         return EXIT_FAILURE;
+    default:
+        return EXIT_SUCCESS;
     }
 
     if ((ftdi = ftdi_new()) == 0)
