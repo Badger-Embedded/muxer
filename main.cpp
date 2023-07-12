@@ -88,6 +88,11 @@ CLICommand parseArguments(int argc, const char **argv, CLIOption* options) {
     return cmd;
 }
 
+int configureDevice()
+{
+    return EXIT_SUCCESS;
+}
+
 
 int main(int argc, const char **argv)
 {
