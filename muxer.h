@@ -1,6 +1,13 @@
 #pragma once
 #include <string>
 
+#define MUX_NO_CONNECTION   0xF1
+#define MUX_DUT_TO_HOST     0xF0
+#define MUX_DUT_TO_DEVICE   0xF3
+#define MUX_DEVICE_TO_HOST  0xF2
+
+#define BIT_DUT_ID          (0x1u << 2)
+
 enum class CLICommand {
   UNKNOWN = -1,
   NONE,
@@ -10,8 +17,8 @@ enum class CLICommand {
   SET_SERIAL,
   INIT,
   DUT,
-  TS,
-  DUT_TO_TS,
+  DEVICE,
+  DUT_TO_DEVICE,
   STATUS
 };
 
