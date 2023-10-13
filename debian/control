@@ -1,0 +1,27 @@
+Source: badgerd-muxer
+Section: utils
+Priority: optional
+Maintainer: Talha Can Havadar <havadartalha@gmail.com>
+Build-Depends:
+ cmake,
+ debhelper-compat (= 12),
+ libftdi1-dev (>= 1.4),
+ libpopt-dev,
+ pkg-config
+Standards-Version: 4.5.0
+Homepage: https://github.com/Badger-Embedded/muxer
+
+Package: badgerd-muxer
+Architecture: any
+Multi-Arch: foreign
+Depends:
+ libftdi1-2 (>=1.4),
+ libpopt0,
+ ${misc:Depends},
+ ${shlibs:Depends}
+Description: CLI tool to control Badgerd USBMUX device.
+ This tool provides commands to utilize the functionalities of the USBMUX hardware.
+  connecting DEVICE and HOST port
+  connecting DEVICE and DUT port
+  connecting DUT and HOST port
+  Modifying ID pin on DUT port
