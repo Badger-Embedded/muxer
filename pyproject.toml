@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "badgerd-muxer"
+version = "0.1.0"
+description = "CLI tool to control Badgerd Muxers"
+authors = ["Talha Can Havadar <havadartalha@gmail.com>"]
+readme = "README.md"
+packages = [
+    { include = "badgerd_muxer" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.1.7"
+# pyftdi = "^0.55.0"
+pyftdi = {git = "https://github.com/talhaHavadar/pyftdi.git"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+badgerd-muxer = "badgerd_muxer.main:cli"
