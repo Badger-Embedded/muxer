@@ -23,7 +23,7 @@ class USBMux(object):
         self._pid = pid
         self._serial = serial
         self._ftdi: Ftdi = Ftdi()
-        self._ftdi.open_from_url(f"ftdi://{vid}:{pid}:{serial}/1")
+        self._ftdi.open_from_url(f"ftdi://{vid}:{pid}:{serial}/1", reset=False)
         self._eeprom = FtdiEeprom()
         self._eeprom.connect(self._ftdi)
         self._mode = USBMuxMode.UNKNOWN

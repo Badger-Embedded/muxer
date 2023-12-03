@@ -12,7 +12,7 @@ packages = [
 python = "^3.10"
 click = "^8.1.7"
 # pyftdi = "^0.55.0"
-pyftdi = {git = "https://github.com/talhaHavadar/pyftdi.git"}
+pyftdi = {git = "https://github.com/talhaHavadar/pyftdi.git", branch="add-optional-reset"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
